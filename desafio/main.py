@@ -1,12 +1,3 @@
-emails = "joao.silva@fiap.com.br, maria.souza@fiap.com.br, ana.paula@fiap.com.br, rodrigo.lima@alun.com.br"
-
-emails_separados = emails.replace(" ", "").split(",")
-
-def mostrar_emails(emails):
-    for email in emails:
-        nome_usuario, dominio = email.split("@")
-        print(f"Usuário: {nome_usuario} | Domínio: {dominio}")
-
 def contar_dominios(emails):
     dicionario = dict()
     
@@ -20,9 +11,25 @@ def contar_dominios(emails):
             
     return dicionario
 
+def exibir_email_por_chave(chave, dicionario):
+    if chave in dicionario:
+        for email in emails_separados:
+            nome_usuario, dominio = email.split("@")
+            
+            if dominio == chave:
+                print(nome_usuario, end=", ")
+                         
+                
+emails = "joao.silva@fiap.com.br, maria.souza@fiap.com.br, ana.paula@fiap.com.br, rodrigo.lima@alun.com.br"
+
+emails_separados = emails.replace(" ", "").split(",")
+
 dicionario = contar_dominios(emails_separados)
 
 for chave, dados in dicionario.items():
     print("Quantidade de emails por domínio:")
     print(f"{chave}: {dados}")
+    print("Lista de Usuários: ", end="")
+    exibir_email_por_chave(chave, dicionario)
+    print()
     print()
