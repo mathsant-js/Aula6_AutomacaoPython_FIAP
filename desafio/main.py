@@ -13,9 +13,18 @@ for email in emails_separados:
     usuarios_por_dominio[dominio].append(usuario)
 
 for dominio, usuarios in usuarios_por_dominio.items():
-    usuarios = tuple(usuarios)
+    usuarios_tupla = tuple(usuarios)
+
+    primeira_posicao = 0
+    ultima_posicao = len(usuarios_tupla) - 1
+
+    primeiro_usuario = usuarios_tupla[primeira_posicao]
+    ultimo_usuario = usuarios_tupla[ultima_posicao]
+
+    primeiro_usuario, ultimo_usuario = ultimo_usuario, primeiro_usuario
     
     print("Quantidade de emails por domínio:")
     print(f"{dominio}: {len(usuarios)}")
     print(f"Lista de usuários: {usuarios}")
+    print(f"Após troca de posições: {primeiro_usuario}, {usuarios_tupla[1:ultima_posicao]}, {ultimo_usuario}")
     print()
